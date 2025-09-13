@@ -1,0 +1,449 @@
+\documentclass[11pt, a4paper]{jarticle}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem*{dfn*}{Definition}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{補題}
+\usepackage{ragged2e}
+\usepackage[margin=20truemm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{ulem}
+\usepackage{abstract}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc,arrows.meta}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage{qexam}
+\usepackage{enumitem}
+\renewcommand{\questionFormat}[1]{
+	\framebox{#1}
+}
+
+\pagestyle{empty}
+
+\usepackage{circuitikz}
+\usepackage{type1cm}
+
+% 数学記号
+\usepackage{amssymb}
+
+
+%%%　サブタイトル　%%%
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+	\posttitle{%
+		\par\end{center}
+		\begin{center}\Large#1\end{center}
+	 }%
+}
+%%%%%%%%%%%%%%%%%
+
+%%%　箇条書き　・　%%%　
+%\renewcommand{\labelitemi}{・}
+\renewcommand{\labelenumi}{(\roman{enumi})}	%(n)の箇条書きに
+%%%%%%%%%%%%%%%%%%
+
+\title{
+	\textbf{
+		科学技術社会論　期末レポート \\
+		「微積分の曖昧さ」 \\
+	}
+}
+\author{
+	Ricchy \\ 
+}
+\date{
+	2025年8月30日 \\
+}
+
+\begin{document}
+	%\tableofcontents	%目次
+	%\clearpage
+	
+	\maketitle
+	
+	\begin{abstract}
+		現代では多くの分野で使われている微分と積分だが，この微分と積分にはあいまいな箇所がいくつも存在する．
+		主に，「無限」という概念，そして，「無限小」という概念が人間の直観と反する考え方をする．
+		それらの概念が歴史的にどのように考えられてきたのかについて考察していく． \\
+		\quad
+		ここでの人名や国名等の書き方は，日本語に直すと読み方がまばらなため，
+		引用文でない限り英語などで書き表すことにする．
+	\end{abstract}
+	
+	\section{NewtonとLeibniz（17世紀）}
+		微分と積分の有名な人と言えば，
+		Isaac NewtonとGottfried Wilhelm Leibnizの2人が挙がる
+		（以下，NewtonとLeibnizと略す）．
+		その2人についての歴史的背景をまずは書籍から考える．
+		
+		\subsection{Isaac Newtonの一生 (1642 - 1727)}
+			Newtonの生涯について，
+			小堀憲 著「数学史」では以下のように記されている．
+			[1]87pより，
+			\begin{quotation}
+				アイザク・ニゥトンは1642年12月25日にイギリスのリンカーンシャの寒村ウールストルプで生まれた．
+				この12月25日という日附には異論もあるようである．
+				1661年にケンブリッジ大学のトリニティ・カレジに入つた．
+				ここを出てから，直ちに，研究生活に入つたが，
+				1669年にバーロの後をついでトリニティ・カレジの教授となつた．
+				さらに1672年に王立教会Royal Societyの会員に推され，
+				1699年に造幣局長に任ぜられて，教職の地位から身を退いたが，
+				1703年に王立教会の会長となり，この二つの重職を，
+				死ぬ日 \sout{　　} 1727年3月20日 \sout{　　} まで担つていた．
+			\end{quotation}
+			Newtonは父Isaac Barrowの研究を継いで研究していたことが分かる．
+			ケンブリッジ大学の教授でもあったBarrowは，
+			微分積分学の基本定理を幾何学的な方法で証明したことや，
+			グーデルマン関数の逆関数を初めて閉じた式で表現したことが業績として挙げられる．
+			すなわち，微分積分学は，Newton自身が作ったのではなく，
+			より昔からあるのである．
+			
+			また，この本の中で，Newtonは以下のように述懐している．
+			[1]87pより，
+			\begin{quotation}
+				若い時 \sout{　　} 1672年 \sout{　　} に
+				初めて世に出した光の屈折と文さんとに関する研究が，
+				学界で，物すごく，しかも不当に，たたかれたので，
+				後年に『われわれは新らしい思想を全然発表しないか，そうでなければ，
+				死ぬ日までそれを守護する奴隷となつてしまうのか，のどちらかを選ばねばならない．
+				しかし，私は私自身の楽しみのために物理学を勉強するのであるから，
+				生きているうちは，私の発見を公表しない積りである』と述懐していることからも，
+				何故ニゥトンが発表することを好まなかつたか，を推察することができるであろう．
+			\end{quotation}
+			Newtonは数多くの発見をしたが，ほとんど発表しないことでも有名である．
+			そんな彼がなぜ発表をしなかったのかがこの言葉から，
+			Newtonは物理学そのものを楽しんでいたが，
+			世間からの批判が辛かったために自分の研究を隠していたと考えられる．
+
+		\subsection{Leibnizの一生 (1646 - 1716)}
+			Leibnizの生涯について，小堀憲 著「数学史」では以下のように記されている．
+			[1]91pより，
+			\begin{quotation}
+				この数学者 \sout{　　} というよりも哲学者 \sout{　　} は
+				1646年6月21日にライプチヒで生まれた．
+				最初はマインツ選挙侯に仕えていたが，1672年には外交官としてパリに駐在し，
+				さらに次の年にはロンドンに渡つて，	政治的手腕を発揮していたが，
+				その後，この選挙侯が死亡したので，ブルンシュヴァイク公に仕え，
+				その後1676年から死亡する日 \sout{　　}~1716年11月14日~\sout{　　} まで
+				ハンノーヴェルの図書館長をつとめていた．
+			\end{quotation}
+			このことから，Leibnizは数学者ではなく，政治関係に携わっていた人であることが分かる．
+			では，Leibnizはどのようにして数学と関わったのかが疑問である．
+			[1]91-92pより，
+			\begin{quotation}
+				ライプニツの生涯のうちで，
+				1672年のパリ生活は意味深いものであつた．
+				それは，このパリでホイヘンスと数学を語り合う機会を持つたからである．
+				この両学者の交遊は，ライプニツに科学思想に，
+				大きな影響を与えたもののようである．
+				これから数年の後に「微分法」と「積分法」とかが樹立されたのであるが，
+				ライプニツの数学上の業績の主なものは，
+				友人のチルンハウゼンが1682年に創刊した雑誌 \textit{Acta Eruditorum} に，
+				だいたい1683年から1692年にかけて10年間つづいて，出ていたが，
+				中でも1684年号に出ている論文
+				「分数量にも，無理数量にも生涯なく適用する事の出来る，
+				極大と極小，ならびに，接線のための新らしい方法，
+				およびそれのための得意な計算方法」
+				Naca methodus pro maximis et minimis,
+				itemque tangentibus quae nec fractas nec irrationales quantitate maratur,
+				et singulare pros illis calculi genus
+				は，
+				ライプニツの微分法を，はじめて，公表したものである．
+			\end{quotation}
+			このことから，LeibnizはChristiaan Huygensと接した事で，
+			数学に関わり始めたことが分かる．
+		
+	\section{微分と積分の歴史}
+		NewtonとLeibnizの大まかな歴史が分かった．
+		ここからは，彼らが携わった微分と積分に着目してどのように微分と積分が確立されたかについて考える．
+	
+		\subsection{現代における微分と積分}
+			現代における微分と積分は過去に比べて様々なものがあるが，
+			過去と比べるに当たって，
+			基本となる微分と，積分について一度振り返る必要がある．
+			
+			\subsubsection{微分とは}
+				微分とは，導関数を求めることである．
+				まず，微分可能かどうかを考える必要がある．
+				\dfn[微分可能]{
+					$y = f(x)$ が $x = a$ において微分可であるとは，
+					\begin{align}
+						y'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}
+					\end{align}
+					が1つの値に収束することと同値である．\\
+				}
+				\thm[連続性]{
+					\begin{align*}
+						x = a \text{で微分可}
+						\implies
+						x = a \text{において連続}
+					\end{align*}\\
+				}
+				これらに基づいて，微分が出来る．したがって，導関数の定義を与える．
+				\dfn[導関数]{
+					ある関数 $f(x)$ において，
+					\begin{align}
+						f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}
+					\end{align}
+					となる $f'(x)$ を導関数と定義する．\\
+				}
+				ここで，現代における一般的な微分の書き方としては，
+				\begin{align*}
+					f'(x), \ \frac{df}{dx}, \  \frac{d}{dx} f(x)
+				\end{align*}
+				が挙げられる．これらが微分の基礎となる部分である．
+			
+			\subsubsection{積分とは}
+				積分とは簡単に言えば微分の逆である．
+				とよく言うが，これは一部のことにすぎない．
+				積分とは，2次元の場合，面積を求めること，3次元の場合，体積を求めることなど，
+				具体的な値として出るものであると私は思う．
+				確かに，不定積分では，微分の逆を行っているが，
+				定積分では違う役割を果たす．
+				これらについて一度確認する．
+			
+			\subsubsection{Riemann積分の概論}
+				Riemann積分とあるが，定積分についてである．
+				定積分と言ってしまうと，Lebesgue積分も含むからである．
+				Lebesgue積分を含まない理由として，
+				筆者がLebesgue積分を十分に理解していないからである．
+				Riemann積分の定義を大まかに一度記す．
+				\dfn[Riemann和]{
+					$f:[a, b] \to \mathbb{R}$ を有界な関数とし，
+					区間を適当に
+					\begin{align}
+						a = x_0 < x_1 < x_2 < \cdots < x_n = b
+					\end{align}
+					と分割する．
+					各区間の幅を $\Delta_k = x_k - x_{k-1}$ とし，
+					$t_k \in [x_{k-1}, x_k]$ を適当に選ぶ．
+					このときの
+					\begin{align}
+						\sum_{k = 1}^n f(t_k) \Delta_k
+					\end{align}
+					を $\{[x_{k-1}, x_k], t_k\}$ に関する $f$ のRiemann和という．\\
+				}
+				このRiemann和を用いて，Riemann積分について定義することが出来る．
+				それを以下に記す．
+				\dfn[Riemann積分]{
+					Riemann和において，
+					区間の幅を $|\Delta| = \max_{1 \le k \le n} \Delta_k$ と定め，
+					$|\Delta| \to 0$ となるように分割を変える（同時に $n \to \infty$ となる）．
+					このとき，分割および $\{t_k\}$ の取り方に関係なく
+					\begin{align}
+						\lim_{|\Delta| \to 0} \sum_{k = 1}^n f(t_k) \Delta_k
+					\end{align}
+					が存在するならば，$f$ は $[a, b]$ 上リーマン積分可能であるといい，
+					この極限値を
+					\begin{align}
+						\int_a^b f(x) dx
+					\end{align}
+					と表し，これを $f$ の $[a, b]$ 間の定積分という． \\
+				}
+				よって，定積分について定義することが出来た．
+				この定積分が定義されることによって，不定積分が定義する事ができる．
+			
+			\subsubsection{不定積分}
+				不定積分とは，原始関数を求めることであるとよく言われる．
+				一度，原始関数について定義する．
+				\dfn[原始関数]{
+					微分して $f(x)$ になる関数 $F(x)$ ，すなわち，
+					\begin{align}
+						F'(x) = f(x), \ x \in \mathbb{R}
+					\end{align}
+					となるとき，$F(x)$ は $f(x)$ の原始関数という．
+					原始関数は，$\int f(x) dx$ とも書ける． \\
+				}
+				これとは別に，不定積分について定義する．
+				\dfn[不定積分]{
+					$a \in \mathbb{R}$ とし，$f$ を閉区間上積分可能であるとする．
+					このとき，
+					\begin{align}
+						\mathcal{F}(x) = \int_a^x f(t) dt, x \in \mathbb{R}
+					\end{align}
+					を $f$ の不定積分という．
+				}
+				これらによって，微分積分学の基本定理より，
+				不定積分と原始関数を求めることが同じことが言える．
+				\thm[微分積分学の基本定理]{
+					$f: [a, b] \to \mathbb{R}$ がRiemann積分可能かつ原始関数 $F$ を持つならば，
+					\begin{align}
+						\int_a^x f(t) dt = F(x) - F(a)
+					\end{align}
+					が成立する．
+				}
+				
+			微分と積分についてはこのような所である．
+			これらが過去とどのような違いがあったのか見ていく．
+			
+		\subsection{流動率法}
+			NewtonとLeibnizらが微分積分の基礎を作ってきた訳であるが，
+			Newtonが記したものとして，流動率法というものがある．
+			「自然哲学の数学的原理」Philosophia naturalis principia mathematica(1687)
+			という通称プリンキピアの第1部に導入されている新しい概念「究極の比」ultima ratioがある．
+			小堀憲 著「数学史」では，
+			\cite{Obori:Sugakushi}89pより，
+			\begin{quotation}
+				ある有限な時間内に，次第に等しくなり，
+				且つ
+				その時間が終る前に，一方が他に対し，任意の与えられた差よりもなお近づく
+				ところの二つの量，
+				または二つの比は，究極において等しくなる
+			\end{quotation}
+			ことを主張したものであると書かれている．
+			これを現代語に訳してみると，\\
+			\quad
+			時間 $t$ とともに変動する量 $f(t), g(t)$ が，
+			時間が $t_0$ から $t_1$ まで変化したとき，$f(t)-g(t)$ が $0$ に収束し，
+			かつ
+			任意の正の数 $\varepsilon$ を与えたとき，適当な $t (< t_1)$ をとると，
+			$|f(t) - g(t)| < \varepsilon$ となるところの
+			2つの量，2つの比は，究極において等しくなる． \\
+			となるであろう（参考：\cite{Obori:Sugakushi}89p）． \\
+			また，これを証明するときは，
+			[1]89pより，
+			\begin{quotation}
+				もし，究極においてそれが等しくないとし，
+				それらの究極における差を $D$ とする．
+				そうすると，$f(t) - g(t)$ は $D$ よりも小さくなることができないから，
+				仮説に反して不都合である
+			\end{quotation}
+			といい，究極における差の存在を仮定している．
+			これは，現代における微分の基礎の部分を示唆していると思う．
+			ただ，文章を見て分かるように，式や文字を使わずに言葉のみで説明しているため，
+			現代の我々が見ても分かりづらくなっている．
+			
+		\subsection{Leibnizの微分法}
+			Naca methodus pro maximis et minimis,
+			itemque tangentibus quae nec fractas nec irrationales quantitate maratur,
+			et singulare pros illis calculi genus
+			の論文の始めの所に以下の内容が書かれている．
+			[1]92pより，
+			\begin{quotation}
+				一つの軸 $AX$ と曲線 $VV$ とを考え，
+				その曲線上の点 $V$ から軸におろした垂線を $VX$ とし，
+				その長さを $v$ ，$AX$ を $x$ 軸とする．
+				$V$ における接線が軸と交わる点を $B$ とする．
+				一方，任意に一つの線分をとつて，それを $dx$ と名づける．
+				$dx$ に対する比が，$v$ が $BX$ に対する比と同じである線分を $dv$ と表して，
+				$v$ の「差」differentiaと名づける
+			\end{quotation}
+			と書かれている．このなかの差とは，現代でいう微分のことを指している．
+			微分とは導関数，すなわち微分係数が元となっているため，
+			接線を元として微分を定義するのは現代と同じである．
+			つまり，微分はLeibnizの手法が元となって現代まで続けられたのであろう．
+			
+	\section{現代の微分積分はどちらが元か}
+		ここからがレポート課題の本題となる．
+		\begin{enumerate}
+			\item {
+				タイトルはこのレポート課題の最初にもあるように，「微積分の曖昧さ」である．
+			}
+			\item {
+				歴史的背景を1章，具体的な内容を2章に書いた．
+			}
+			\item {
+				小堀憲 著「数学史」では，
+				[1]92pより，
+				\begin{quotation}
+					ライプニツの定義からすぐにわかるように，
+					ここでは「接線をひくことができる」ことが前提となつている．
+					「接線」は幾何学的に明白な概念であるとして，
+					定義しないで用いている．
+					したがつて，これに引きつづいて与えている微分法の基本公式においても，
+					『証明は用意である』と述べているが，
+					「微分」そのものが幾何学的な「接線」の概念が媒介として定義されているのであるから，
+					証明しようと思えば，
+					幾何学的で且つ直観的な方法によらざるを得ないであろう．
+					この点は，ニゥトンが，不完全ではあるが，
+					「究極の比」の概念を用いて「流動率」を定義した方法の方が，
+					現代のものに近い，といえるのではなかろうか．
+				\end{quotation}
+				と書かれている．
+				また，Clifford Pickover 著「ビジュアル数学全史 -人類誕生から多次元宇宙まで-」では，
+				[2]68pより，
+				\begin{quotation}
+					ニュートンは微積分を物理学の問題に適応した最初の人物であり，
+					現代の微積分の書物に見られる記法の多くを開発したのはライプニッツだ．
+				\end{quotation}
+				と書かれている．
+			}
+			\item {
+				2者ともNewtonとLeibnizが微分積分学に影響していて，
+				事実に基づいた持論である． \\
+				異なる点として，小堀憲 著「数学史」では，
+				Newtonのほうが現代の物に近い
+				と書かれており，
+				Clifford Pickover 著「ビジュアル数学全史 -人類誕生から多次元宇宙まで-」では，
+				Newtonは物理学に適応させた人物でLeibnizが現代の微積分に貢献している
+				と書かれていると私は感じた．
+			}
+			\item {
+				私はClifford Pickoverさんの意見に賛同である．\\
+				理由として，Leibnizの微分の表記がとても見やすいので，
+				自分はLeibnizのやり方の方が好きであると感じたからである．
+			}
+			\item {
+				自分は $f'(x)$ と $\frac{df}{dx}$ のどちらの表記も使うことがあるが，
+				$\frac{df}{dx}$ の表記は何で微分したいのかがはっきりと分かる．
+				すなわち，変数が2つ以上でも使えるため，応用が効きやすいと思う．
+				その点，私は多変数解析学に興味があって，
+				よくこちらの表記を使うことがあるので，自分にとって貢献が高いなと感じたのもあるのかもしれない．
+			}
+			\item {
+				今回扱った微分積分学は，物理の世界やコンピュータの世界，そして，
+				もちろん数学の世界に偉大なる貢献をしています．
+				その例として，物理で用いる物理演算や，コンピュータの内部処理における展開処理が挙げられます．
+			}
+			\item {
+				「微分と積分の歴史について説明していくのだ！」\\
+				「今回はニュートンとライプニッツについてなのだ！（画像）」\\
+				「この人たちは微分と積分の基を作ったとってもすごい人なのだ！」\\
+				「実はニュートンはそれらを物理で使えるようにしただけなのだ！」\\
+				「数学的にはライプニッツが微分と積分を作っているのだ！」\\
+				「微分と積分について詳しいことは高校になってから習うのだ！」\\
+				「今回はここまでなのだ！」
+			}
+		\end{enumerate}
+ 	
+ 	\begin{thebibliography}{9}
+
+		\bibitem{Obori:Sugakushi}
+		小堀 憲．
+		\newblock {\em 数学史}．
+		\newblock 朝倉書店．1976．
+		
+		\bibitem{Clifford:visual}
+		Clifford Pickover. 根上 生也 訳．水原 文 訳
+		\newblock {\em ビジュアル数学全史 -人類誕生から多次元宇宙まで-}.
+		\newblock 株式会社 岩波書店．2017．
+		
+	\end{thebibliography}
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
